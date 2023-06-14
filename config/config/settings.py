@@ -11,10 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
-from decouple import config,Csv
+# import cloudinary
+# import cloudinary.uploader
+# import cloudinary.api
+# from decouple import config,Csv
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = 'django-insecure-$yxgr8spfyt4@vi1p*2clny6g0c3_4h5xb=#&)m9_le)yj4kb6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -42,9 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cloudinary',
+    # 'cloudinary',
     'photoapp',
-    'crispy_forms',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -84,11 +84,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASS'),
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -111,12 +107,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-cloudinary.config (
-    cloud_name = config('CD_NAME'),
-    api_key = config('CD_API'),
-    api_secret = config('CD_SECRET'),
-    secure = config('CD_SECURE')
-    )
+# cloudinary.config (
+#     cloud_name = config('CD_NAME'),
+#     api_key = config('CD_API'),
+#     api_secret = config('CD_SECRET'),
+#     secure = config('CD_SECURE')
+#     )
 
 
 # Internationalization
@@ -129,6 +125,12 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+# Django Authentication
+LOGIN_URL = 'user:login'
+LOGIN_REDIRECT_URL = 'photo:list'
+
+LOGOUT_REDIRECT_URL = 'photo:list'
 
 
 # Static files (CSS, JavaScript, Images)
