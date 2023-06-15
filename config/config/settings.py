@@ -16,6 +16,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 # import cloudinary.api
 # from decouple import config,Csv
 from pathlib import Path
+import dj_database_url
+
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -88,6 +91,11 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -143,7 +151,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL = '/media/'
+MEDIA_URL = 'media/'
 
 # MEDIA_URL is the URL that handles all the media uploaded to the MEDIA_ROOT folder.
 
