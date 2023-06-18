@@ -11,10 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 
-# import cloudinary
-# import cloudinary.uploader
-# import cloudinary.api
-# from decouple import config,Csv
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+from decouple import config
 from pathlib import Path
 import dj_database_url
 
@@ -33,7 +33,7 @@ SECRET_KEY = 'django-insecure-$yxgr8spfyt4@vi1p*2clny6g0c3_4h5xb=#&)m9_le)yj4kb6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'cloudinary',
+    'cloudinary',
     'photoapp',
     'users',
 ]
@@ -114,12 +114,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# cloudinary.config (
-#     cloud_name = config('CD_NAME'),
-#     api_key = config('CD_API'),
-#     api_secret = config('CD_SECRET'),
-#     secure = config('CD_SECURE')
-#     )
+cloudinary.config (
+    cloud_name = config('CD_NAME'),
+    api_key = config('CD_API'),
+    api_secret = config('CD_SECRET'),
+    secure = config('CD_SECURE')
+    )
 
 
 # Internationalization
@@ -127,7 +127,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
