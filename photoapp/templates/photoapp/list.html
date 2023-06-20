@@ -1,15 +1,29 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
+
+{% load static %}  <!-- Add this line to load the static tag library -->
 
 {% block body %}
 
 <div class="row">
-  {% for photo in photos %}
+  <!-- Add the images from the media folder -->
   <div class="col-lg-3 col-md-4 col-xs-6">
-    <a href="{% url 'photo:detail' photo.id %}" class="d-block mb-4 h-100">
-      <img src="{{photo.image.url}}" class="img-fluid rounded" alt="{{photo.title}}" />
-    </a>
+    <img src="{% static 'media/aiesecdinner.JPG' %}" class="img-fluid rounded" alt="AIESEC Dinner" />
   </div>
-  {% endfor %}
+  <div class="col-lg-3 col-md-4 col-xs-6">
+    <img src="{% static 'media/attending.jpg' %}" class="img-fluid rounded" alt="Attending Event" />
+  </div>
+  <div class="col-lg-3 col-md-4 col-xs-6">
+    <img src="{% static 'media/dressedinblue.jpg' %}" class="img-fluid rounded" alt="Dressed in Blue" />
+  </div>
+  <div class="col-lg-3 col-md-4 col-xs-6">
+    <img src="{% static 'media/girlies.JPG' %}" class="img-fluid rounded" alt="Girls' Day Out" />
+  </div>
+  <div class="col-lg-3 col-md-4 col-xs-6">
+    <img src="{% static 'media/nachosanddrinks.jpg' %}" class="img-fluid rounded" alt="Nachos and Drinks" />
+  </div>
+  <div class="col-lg-3 col-md-4 col-xs-6">
+    <img src="{% static 'media/views.jpg' %}" class="img-fluid rounded" alt="Beautiful Views" />
+  </div>
 </div>
 
 {% endblock body %}

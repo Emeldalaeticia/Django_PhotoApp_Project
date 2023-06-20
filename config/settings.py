@@ -143,19 +143,22 @@ LOGOUT_REDIRECT_URL = 'photo:list'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    # Path to the static folder in your project
+    BASE_DIR / 'static',
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 
 # MEDIA_URL is the URL that handles all the media uploaded to the MEDIA_ROOT folder.
 
-MEDIA_ROOT = BASE_DIR / 'media/'
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media/')
 # On the other hand, MEDIA_ROOT is the path that points to the folder where all the media will be placed.
 
 # Indicates the frontend framework django crispy forms will use
