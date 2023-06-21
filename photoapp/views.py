@@ -12,9 +12,20 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 
 from .forms import PhotoForm
+from django.shortcuts import redirect
 
+from django.contrib.auth.decorators import login_required
 
 from .models import Photo
+
+def like_photo(request, photo_id):
+    photo = Photo.objects.get(id=photo_id)
+    user = request.user
+    if user not in photo.likes.all():
+        photo.likes.add(user)
+    else:
+        photo.likes.remove(user)
+    return redirect('photo:detail', photo_id=photo_id)  
 
 class PhotoListView(ListView):
 
@@ -65,4 +76,6 @@ class PhotoDeleteView(UserIsSubmitter, DeleteView):
 
     template_name = 'photoapp/delete.html'
     model = Photo
-    success_url = reverse_lazy('photo:list')      
+    success_url = reverse_lazy('photo:list')   
+
+ 
